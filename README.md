@@ -27,6 +27,7 @@ The bot can be configured by using the following environment variables:
 	> You can also place a [zuliprc](https://zulip.com/api/running-bots#running-a-bot) at the root of this repo.
 
 * Slack
+	* The branch titled simple-slack-bot was created to modify the original bot to send one leetcode problem a day to a Slack channel.
 	* `DLB_SLACK_WEBHOOK` - the webhook URL for an [incoming webhook](https://api.slack.com/messaging/webhooks)
 
 * Bot
@@ -37,9 +38,9 @@ The bot can be configured by using the following environment variables:
 
 ### Running
 1. Clone this repo
-1. Install dependencies
+2. Install dependencies
 	1. `npm install`
-1. Run the bot
+3. Run the bot
 	1. `npm start`
 
 ## Repo Overview
