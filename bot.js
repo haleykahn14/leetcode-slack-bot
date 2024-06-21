@@ -1,5 +1,3 @@
-import { spawn } from 'node:child_process';
-
 import cron from 'node-cron';
 
 import 'dotenv/config'
@@ -15,14 +13,14 @@ const slackWebhookURL = process.env.DLB_SLACK_WEBHOOK;
 class LeetCodeBot {
 	static async run () {
 		cron.schedule(cronSchedule, async () => {
-			const date = new Date(); // '2022-12-17T10:00:00.000-05:00' <- Use this date string for testing Advent of Code functionality
+			const date = new Date(); 
 
 			const humanReadableDateString = date.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'short', timeZone: timezone });
 			console.info(`Getting leetcode problem for ${humanReadableDateString}`);
 
 			try {
-				console.info('Trying alfa-leetcode-api...');
-					// If we can't get the response from the leetcode API directly, try alfa-leetcode-api.
+				console.info('Making the call to alfa-leetcode-api...');
+					// This is the current functioning daily leetcode api
 					// https://github.com/alfaArghya/alfa-leetcode-api
 				let response = await fetch('https://alfa-leetcode-api.onrender.com/daily');
 				let leetcode_data;
@@ -37,6 +35,7 @@ class LeetCodeBot {
 
 						link: leetcode_data.questionLink.match(/\/problems\/.*/)[0]
 					}
+
 				} else {
 					console.group('There was a problem fetching data from alfa-leetcode-api.');
 					console.error(response.status, response.statusText);
@@ -72,6 +71,7 @@ class LeetCodeBot {
 			timezone
 		});
 
+
 		console.info(`Daily Leetcode Bot is running and will post to Slack with the following configuration:
 		Schedule(cron): ${cronSchedule}
 		Recipient: ${messageReceiver}
@@ -103,7 +103,7 @@ class LeetCodeBot {
 					elements: [
 						{
 							type: "plain_text",
-							text: "Good morning! It is a great day to build your coding skills!"
+							text: "Good morning Kappa Theta Pi! It is a great day to build your coding skills!"
 						}
 					]
 				},
@@ -162,40 +162,6 @@ class LeetCodeBot {
 			console.error('Error posting message to Slack:', error);
 		}
 	}
-}
-
-/**
- * Returns a random number from 0 to max
- * @type {(max: number) => number}
- */
-const random = (max) => Math.floor(Math.random() * (max + 1));
-
-/**
- * Returns a JSON object containing the result of the get_daily_question.py script
- * @returns { Promise<object> }
- */
-async function run_python() {
-	return new Promise((resolve, reject) => {
-		let jsonFromPython;
-
-		const python = spawn('python', ['./get_daily_question.py']);
-
-		python.stdout.on('data', function (data) {
-			try {
-				jsonFromPython = JSON.parse(data.toString());
-			} catch (e) {
-				console.error(e);
-				resolve(data.toString());
-			}
-		});
-
-		python.on('close', (code) => {
-			console.info(`Python script finished with code ${code}`);
-			console.info('Data from python script:');
-			console.info(jsonFromPython);
-			resolve(jsonFromPython);
-		});
-	});
 }
 
 LeetCodeBot.run();
