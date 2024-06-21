@@ -10,12 +10,6 @@ const messageType = process.env.DLB_USER_ID ? 'direct' : 'stream';
 const messageTopic = process.env.DLB_TOPIC || 'Daily Leetcode Problem';
 const slackWebhookURL = process.env.DLB_SLACK_WEBHOOK;
 
-var server_port = process.env.YOUR_PORT || process.env.PORT || 80;
-var server_host = process.env.YOUR_HOST || '0.0.0.0';
-server.listen(server_port, server_host, function() {
-    console.log('Listening on port %d', server_port);
-});
-
 class LeetCodeBot {
 	static async run () {
 		cron.schedule(cronSchedule, async () => {
