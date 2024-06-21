@@ -1,9 +1,4 @@
 
-
-<p align="center">
-	<img width="200px" height="200px" src="https://github.com/RodEsp/daily-leetcode-bot/assets/1084688/30e9f79f-0b6a-4691-8537-77f892c635bf">
-</p>
-
 # Daily Leetcode Bot 
 
 The Daily Leetcode Bot can post questions from [leetcode.com](https://leetcode.com) to Slack every day.
