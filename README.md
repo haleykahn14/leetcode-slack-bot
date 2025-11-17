@@ -37,6 +37,3 @@ The business logic for the bot and where all the configuration gets applied.
 GraphQL queries that can be used with the Leetcode API. <br/>
 Unfortunately the Leetcode API is not documented but useful information about it can be found [here](https://github.com/aylei/leetcode-rust/issues/12), [here](https://leetcode.com/discuss/general-discussion/1297705/is-there-public-api-endpoints-available-for-leetcode), and by searching the intertubez.
 
-## Contributing
-
-> Please read our [Code of Conduct](CODE_OF_CONDUCT.md)
