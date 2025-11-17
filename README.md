@@ -5,7 +5,7 @@ The Daily Leetcode Bot can post questions from [leetcode.com](https://leetcode.c
 
 ## ORIGINAL AUTHOR
 > The original code used to create this bot can be found at: https://github.com/RodEsp/daily-leetcode-bot
-> The original author of the code is @RodEsp. 
+> The original author of the code is @RodEsp. This code was modified to work with the Slack app.
 
 ## Getting Started
 > To run this bot you must have [Node.js](https://nodejs.org/) installed.
